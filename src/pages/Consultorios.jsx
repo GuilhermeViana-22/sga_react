@@ -1,0 +1,112 @@
+import React, { useState } from 'react';
+import {
+    Grid,
+    Card,
+    CardHeader,
+    CardContent,
+    CardActions,
+    TextField,
+    Button,
+    Switch,
+    FormControlLabel
+} from '@material-ui/core';
+import axios from "axios";
+import Swal from 'sweetalert2';
+
+const Main = ({ children }) => {
+    const [checked, setChecked] = useState(false);
+    const [formValues, setFormValues] = useState({
+        consultorio: '',
+        ativo: true,
+    });
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+        setFormValues({
+            ...formValues,
+            ativo: event.target.checked ? 1 : 0,
+        });
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:8000/api/consultorios', {
+                consultorio: formValues.consultorio,
+                ativo: parseInt(formValues.ativo),
+            });
+
+            // exibe mensagem de sucesso com cor verde
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso!',
+                text:  response.data.message,
+            });
+
+        } catch (error) {
+            console.log(error); // exibe o erro completo no console
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro!',
+                text: error.response.data.error,
+            });
+        }
+    }
+
+    return (
+        <main style={{ marginLeft: '250px', padding: '20px' }}>
+            {children}
+
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <Card>
+                        <form onSubmit={handleSubmit}>
+                            <CardHeader title="Cadastro de Consutórios" />
+                            <CardContent>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={8}>
+                                        <TextField
+                                            fullWidth
+                                            label="Descrição"
+                                            value={formValues.consultorio}
+                                            onChange={(event) =>
+                                                setFormValues({
+                                                    ...formValues,
+                                                    consultorio: event.target.value,
+                                                })
+                                            }
+                                        />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <FormControlLabel
+                                            control={
+                                                <Switch
+                                                    checked={checked}
+                                                    onChange={handleChange}
+                                                    name="mySwitch"
+                                                    color="primary"
+                                                />
+                                            }
+                                            label="Ativo"
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </CardContent>
+                            <CardActions>
+                                <Button variant="contained" color="primary" type="submit">
+                                    Salvar
+                                </Button>
+                            </CardActions>
+                        </form>
+                    </Card>
+                </Grid>
+            </Grid>
+            <br />
+            <br />
+            <p>teste</p>
+        </main>
+    );
+};
+
+export default Main;

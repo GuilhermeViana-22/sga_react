@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Sidebar from './components/Sidebar';
 import Unidade from './pages/Unidade';
-import About from './pages/About';
+import Consultorios from './pages/Consultorios';
 import Funcionarios from './pages/Funcionarios';
 import Layout from './components/Layout';
 
@@ -26,7 +25,7 @@ function App() {
                 <Layout>
                     <Routes>
                         <Route path="/unidades" element={<Unidade />} />
-                        <Route path="/about" element={<About />} />
+                        <Route path="/consultorios" element={<Consultorios />} />
                         <Route path="/Funcionarios" element={<Funcionarios />} />
                     </Routes>
                 </Layout>
