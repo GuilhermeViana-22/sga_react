@@ -1,0 +1,18 @@
+*{
+    margin: 0 auto;
+    padding: 0px;
+    font-family: sans-serif;
+}
+body{
+    background-color: #f5f5f5;
+}
+
+ul, li {
+    list-style-type: none;
+    font-size: 14pt;
+    margin-top: 50px;
+}
+.fa-bars{
+    margin-left: 40px;
+}
+
