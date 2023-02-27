@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Unidade from './pages/Unidade';
 import Consultorios from './pages/Consultorios';
 import Funcionarios from './pages/Funcionarios';
+import Home from './pages/Home';
 import Layout from './components/Layout';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +25,7 @@ function App() {
             <div className={classes.root}>
                 <Layout>
                     <Routes>
+                        <Route path="/" element={<Home />} />
                         <Route path="/unidades" element={<Unidade />} />
                         <Route path="/consultorios" element={<Consultorios />} />
                         <Route path="/Funcionarios" element={<Funcionarios />} />

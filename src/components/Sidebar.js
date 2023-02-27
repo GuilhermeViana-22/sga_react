@@ -44,6 +44,11 @@ function Sidebar() {
             <img src={logo} alt="Menu" className={classes.logo}/>
             <ul className={classes.menu}>
                 <li>
+                    <NavLink to="/" className={classes.link} activeClassName={classes.active}>
+                        <i className="fa fa-house"></i> Home
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/unidades" className={classes.link} activeClassName={classes.active}>
                         <i className="fa fa-hospital"></i> Unidades
                     </NavLink>

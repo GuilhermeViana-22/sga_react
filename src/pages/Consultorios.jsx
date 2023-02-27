@@ -8,7 +8,8 @@ import {
     TextField,
     Button,
     Switch,
-    FormControlLabel
+    FormControlLabel,
+    IconButton
 } from '@material-ui/core';
 import axios from "axios";
 import Tabela from './Elements/Tabela';
@@ -60,6 +61,7 @@ const Main = ({ children }) => {
     }
 
     return (
+
         <main style={{ marginLeft: '250px', padding: '20px' }}>
             {children}
 
@@ -67,10 +69,10 @@ const Main = ({ children }) => {
                 <Grid item xs={12}>
                     <Card>
                         <form onSubmit={handleSubmit}>
-                            <CardHeader title="Cadastro de Consutórios" />
-                            <CardContent>
+                            <CardHeader  title="Cadastro de Consutórios" />
+                            <CardContent className={"formularios"}>
                                 <Grid container spacing={3}>
-                                    <Grid item xs={8}>
+                                    <Grid item xs={5}>
                                         <TextField
                                             fullWidth
                                             label="Descrição"
@@ -83,19 +85,21 @@ const Main = ({ children }) => {
                                             }
                                         />
                                     </Grid>
-                                    <Grid item xs={4}>
-                                        <FormControlLabel
-                                            control={
-                                                <Switch
-                                                    checked={checked}
-                                                    onChange={handleChange}
-                                                    name="mySwitch"
-                                                    color="primary"
-                                                />
-                                            }
-                                            label="Ativo"
-                                        />
-                                    </Grid>
+                                </Grid>
+                                <br />
+                                <br />
+                                <Grid item xs={4}>
+                                    <FormControlLabel
+                                        control={
+                                            <Switch
+                                                checked={checked}
+                                                onChange={handleChange}
+                                                name="mySwitch"
+                                                color="primary"
+                                            />
+                                        }
+                                        label="Ativo"
+                                    />
                                 </Grid>
                             </CardContent>
                             <CardActions>
