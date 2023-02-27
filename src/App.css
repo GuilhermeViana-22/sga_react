@@ -16,3 +16,30 @@ ul, li {
     margin-left: 40px;
 }
 
+/*Transforma as informações vinda da tabela em negrito*/
+.MuiTableBody-root{
+    text-transform: uppercase;
+}
+/*cria o efeito de hover do datatable*/
+.MuiTableRow-root:hover{
+    background-color: #f3f2f2;
+}
+/*deixa os titulos do datatable em negrito */
+#header{
+    font-weight: bold;
+}
+table {
+    padding: 0;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.1));
+}
+
+.submit{
+
+}
+
+.MuiCardActions-root{
+    background-color: #f3f2f2;
+}
+i{
+    padding: 2px;
+}

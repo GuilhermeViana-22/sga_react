@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Grid,
     Card,
@@ -11,6 +11,7 @@ import {
     FormControlLabel
 } from '@material-ui/core';
 import axios from "axios";
+import Tabela from './Elements/Tabela';
 import Swal from 'sweetalert2';
 
 const Main = ({ children }) => {
@@ -19,6 +20,7 @@ const Main = ({ children }) => {
         consultorio: '',
         ativo: true,
     });
+    const [tableKey, setTableKey] = useState(0); // add key to table component
 
     const handleChange = (event) => {
         setChecked(event.target.checked);
@@ -43,6 +45,9 @@ const Main = ({ children }) => {
                 title: 'Sucesso!',
                 text:  response.data.message,
             });
+
+            // refresh table component by updating its key
+            setTableKey(tableKey + 1);
 
         } catch (error) {
             console.log(error); // exibe o erro completo no console
@@ -95,7 +100,7 @@ const Main = ({ children }) => {
                             </CardContent>
                             <CardActions>
                                 <Button variant="contained" color="primary" type="submit">
-                                    Salvar
+                                    <i className="fa-solid fa-plus"></i> Salvar
                                 </Button>
                             </CardActions>
                         </form>
@@ -104,7 +109,7 @@ const Main = ({ children }) => {
             </Grid>
             <br />
             <br />
-            <p>teste</p>
+            <Tabela key={tableKey} /> {/* adiciona o componente Tabela com a key atualizada */}
         </main>
     );
 };
