@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
                     variant="contained"
                     color="primary"
                     size="small"
-                    style={{ position: "fixed", right: 10, fontSize: '10px' }}
+                    style={{ position: "relative", float: "right", fontSize: '10px' }}
                     onClick={() => window.location.href="/"}>
                     Voltar
                 </Button>

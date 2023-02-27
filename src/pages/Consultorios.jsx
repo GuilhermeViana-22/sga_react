@@ -69,7 +69,7 @@ const Main = ({ children }) => {
                 <Grid item xs={12}>
                     <Card>
                         <form onSubmit={handleSubmit}>
-                            <CardHeader  title="Cadastro de Consutórios" />
+                            <CardHeader    title="Cadastro de Consutórios" />
                             <CardContent className={"formularios"}>
                                 <Grid container spacing={3}>
                                     <Grid item xs={5}>
