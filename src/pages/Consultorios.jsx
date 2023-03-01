@@ -75,7 +75,9 @@ const Main = ({ children }) => {
                                     <Grid item xs={5}>
                                         <TextField
                                             fullWidth
-                                            label="Descrição"
+                                            id="outlined-required"
+                                            placeholder="Consultório"
+                                            variant="outlined"
                                             value={formValues.consultorio}
                                             onChange={(event) =>
                                                 setFormValues({

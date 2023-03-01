@@ -48,11 +48,15 @@ table {
 
 /* Definir o tamanho personalizado do Switch */
 .MuiSwitch-root{
-
     height: 20px;
 }
 
 /* Ajustar o tamanho da área do FormControlLabel */
 .MuiFormControlLabel-root {
     width: fit-content;
+}
+
+.menulateral{
+    border-bottom: 5px solid red;
+
 }

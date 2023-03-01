@@ -5,6 +5,7 @@ import logo from '../assets/logo.png';
 import '../App.css';
 
 const darkmode = '#001834';
+const whitemode = '#ffffff';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: 240,
@@ -44,22 +45,22 @@ function Sidebar() {
             <img src={logo} alt="Menu" className={classes.logo}/>
             <ul className={classes.menu}>
                 <li>
-                    <NavLink to="/" className={classes.link} activeClassName={classes.active}>
+                    <NavLink to="/" className={classes.link}>
                         <i className="fa fa-house"></i> Home
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/unidades" className={classes.link} activeClassName={classes.active}>
+                    <NavLink to="/unidades" className={classes.link} >
                         <i className="fa fa-hospital"></i> Unidades
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/funcionarios" className={classes.link} activeClassName={classes.active}>
+                    <NavLink to="/funcionarios" className={classes.link} >
                         <i className="fa fa-user-md" aria-hidden="true"></i> Funcionarios
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/consultorios" className={classes.link} activeClassName={classes.active}>
+                    <NavLink to="/consultorios" className={classes.link}>
                         <i className="fa-solid fa-mobile"></i> Consultórios
                     </NavLink>
                 </li>
