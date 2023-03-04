@@ -5,7 +5,7 @@ import logo from '../assets/logo.png';
 import '../App.css';
 
 const darkmode = '#001834';
-const whitemode = '#ffffff';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         width: 240,

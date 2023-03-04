@@ -1,8 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import Main from './Main';
-import Home from '../pages/Home';
-import {IconButton, Button} from "@material-ui/core";
+import { Button} from "@material-ui/core";
 
 const Layout = ({ children }) => {
     return (

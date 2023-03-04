@@ -8,6 +8,10 @@ body{
     background-color: #f5f5f5;
 }
 
+#btn {
+    margin-left: 10px;
+}
+
 i{
     padding: 2px;
 }
@@ -45,18 +49,25 @@ table {
 .MuiCardActions-root{
     background-color: #f3f2f2;
 }
+/*Definir a estilização da paginação*/
 
-/* Definir o tamanho personalizado do Switch */
+
+    /* Definir o tamanho personalizado do Switch */
 .MuiSwitch-root{
-    height: 20px;
+    height: 40px;
 }
-
+.MuiSwitch-track{
+    height: 40px;
+}
 /* Ajustar o tamanho da área do FormControlLabel */
 .MuiFormControlLabel-root {
     width: fit-content;
 }
+.MuiSwitch-root {
+    width: 60px;
+height: 36px;
+}
 
-.menulateral{
-    border-bottom: 5px solid red;
-
+.MuiSwitch-switchBase {
+    padding: 12px;
 }

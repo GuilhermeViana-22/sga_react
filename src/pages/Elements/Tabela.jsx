@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@material-ui/core';
 import axios from '../../api';
 import $ from 'jquery';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net-dt/js/dataTables.dataTables.min.js';
 import 'datatables.net/js/jquery.dataTables';
-import Swal from 'sweetalert2';
+import BasicModal from '../Elements/Modal';
+import DeleteIcon from "@material-ui/icons/Delete";
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+import EditIcon from '@mui/icons-material/Edit';
+import Button from '@material-ui/core/Button';
+import theme from '../styles/theme';
 
 const columns = [
     { id: 'id', label: 'Código ' },
@@ -15,8 +20,20 @@ const columns = [
 ];
 
 function Tabela() {
-    const [results, setTableData] = useState([]);
+    const [results, setTableData, ] = useState([]);
     const tableRef = useRef(null);
+
+    //chamadas para abertura e fehcamento de modal
+    const [open, setOpen] = useState(false);
+    const [selectedId, setSelectedId] = useState(null);
+    const handleOpen = (id) => {
+        setSelectedId(id);
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setSelectedId(null);
+        setOpen(false);
+    };
 
     useEffect(() => {
         axios.get('')
@@ -69,7 +86,12 @@ function Tabela() {
                             <TableCell>{result.id}</TableCell>
                             <TableCell>{result.consultorio}</TableCell>
                             <TableCell>{(Number(result.ativo) === 1) ? 'Disponível' : 'Não'}</TableCell>
-                            <TableCell>{result.acoes}</TableCell>
+                            <TableCell>
+                                <Button  onClick={() => handleOpen(result.id)} variant="contained" color="secondary" startIcon={<DeleteIcon />} > Excluir</Button>
+                                {(selectedId === result.id) && <BasicModal open={open} handleClose={handleClose}  id={ result.id} nome={result.consultorio} />}
+
+                            </TableCell>
+
                         </TableRow>
                     ))}
                 </TableBody>
