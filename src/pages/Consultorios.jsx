@@ -60,10 +60,8 @@ const Main = ({ children }) => {
     }
 
     return (
-
         <main style={{ marginLeft: '250px', padding: '20px' }}>
             {children}
-
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Card>
