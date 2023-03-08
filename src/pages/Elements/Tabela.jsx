@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CardContent} from '@material-ui/core';
 import axios from '../../api';
 import $ from 'jquery';
 import 'datatables.net-dt/css/jquery.dataTables.css';
@@ -7,10 +7,9 @@ import 'datatables.net-dt/js/dataTables.dataTables.min.js';
 import 'datatables.net/js/jquery.dataTables';
 import BasicModal from '../Elements/Modal';
 import DeleteIcon from "@material-ui/icons/Delete";
-import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import EditIcon from '@mui/icons-material/Edit';
 import Button from '@material-ui/core/Button';
-import theme from '../styles/theme';
+import Swal from "sweetalert2";
+
 
 const columns = [
     { id: 'id', label: 'Código ' },
@@ -20,7 +19,7 @@ const columns = [
 ];
 
 function Tabela() {
-    const [results, setTableData, ] = useState([]);
+    const [results, setTableData ] = useState([]);
     const tableRef = useRef(null);
 
     //chamadas para abertura e fehcamento de modal
@@ -35,11 +34,31 @@ function Tabela() {
         setOpen(false);
     };
 
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:8000/api/consultorios?id=${id}`)
+            .then((response) => {
+                // exibe mensagem de sucesso com cor verde
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso!',
+                    text:  response.data.message,
+                }); console.log(response)
+
+                setTableData(prevResults => prevResults.filter(result => result.id !== id));
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro!',
+                    text: error.response.data.error,
+                });
+            });
+    };
+
     useEffect(() => {
         axios.get('')
             .then(response => {
                 const results = response.data.data;
-                console.log(results)
                 setTableData(results);
 
                 // Verifique se o DataTable já foi inicializado na tabela
@@ -71,7 +90,9 @@ function Tabela() {
     }, [results]);
 
     return (
+
         <TableContainer className={'tabela'} component={Paper}>
+            <CardContent>
             <Table id="consultorios" ref={tableRef}>
                 <TableHead>
                     <TableRow>
@@ -87,16 +108,17 @@ function Tabela() {
                             <TableCell>{result.consultorio}</TableCell>
                             <TableCell>{(Number(result.ativo) === 1) ? 'Disponível' : 'Não'}</TableCell>
                             <TableCell>
-                                <Button  onClick={() => handleOpen(result.id)} variant="contained" color="secondary" startIcon={<DeleteIcon />} > Excluir</Button>
-                                {(selectedId === result.id) && <BasicModal open={open} handleClose={handleClose}  id={ result.id} nome={result.consultorio} />}
-
+                                <Button onClick={() => handleOpen(result.id)} variant="contained" color="secondary" startIcon={<DeleteIcon />} > Excluir</Button>
+                                {(selectedId === result.id) && <BasicModal open={open} handleClose={handleClose} id={result.id} nome={result.consultorio} onConfirmDelete={() => handleDelete(result.id)} />}
                             </TableCell>
-
                         </TableRow>
                     ))}
                 </TableBody>
+
             </Table>
+            </CardContent>
         </TableContainer>
+
     );
 }
 

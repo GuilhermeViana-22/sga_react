@@ -2,21 +2,58 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Button, CardActions } from "@material-ui/core";
 import '../../App.css';
-import {Button} from "@material-ui/core";
+
 const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 700,
+    bgcolor: "background.paper",
     boxShadow: 24,
-    p: 4,
+    borderRadius: 2,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    maxHeight: "80%",
+    overflowY: "auto",
 };
 
-export default function BasicModal({ open, handleClose, id, nome }) {
+const headerStyle = {
+    bgcolor: "#EDEEF0",
+    padding: "20px 44px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: "4px 4px 0 0",
+};
+
+const bodyStyle = {
+    bgcolor: "#ffffff",
+    padding: "40px 80px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: "4px 4px 0 0",
+};
+
+const footerStyle = {
+    display: "flex",
+    justifyContent: "flex-end",
+    padding: "12px 24px",
+    bgcolor: "#F5F5F5",
+    borderRadius: "0 0 4px 4px",
+};
+
+export default function BasicModal({ open, handleClose, id, nome, onConfirmDelete }) {
+
+    const handleDelete = () => {
+        onConfirmDelete(id);
+        handleClose();
+    }
+
     return (
         <Modal
             open={open}
@@ -25,15 +62,20 @@ export default function BasicModal({ open, handleClose, id, nome }) {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Text in a modal
+                <Typography id="modal-modal-title" variant="h6" component="h2" sx={headerStyle}>
+                    Consultórios
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Tem certeza que deseja deletar o {nome} ?.
+                <Typography id="modal-modal-description" sx={bodyStyle}>
+                    Deseja realmente excluir o consultório {nome}?
                 </Typography>
-                <Button variant="contained" color="primary" type="submit">
-                    <i className="fa-solid fa-plus"></i> Salvar
-                </Button>
+                <CardActions sx={footerStyle}>
+                    <Button variant="outlined" color="primary" onClick={handleClose}>
+                        Cancelar
+                    </Button>
+                    <Button variant="contained" color="secondary" onClick={handleDelete}>
+                        Excluir
+                    </Button>
+                </CardActions>
             </Box>
         </Modal>
     );
