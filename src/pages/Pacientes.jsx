@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import unidade from '../api';
 import axios from 'axios';
-
 import {Grid, Card, CardHeader, CardContent, CardActions, TextField, Button, InputLabel} from '@material-ui/core';
 import Swal from "sweetalert2";
-import tabelaUnidade from "./Elements/tabelaUnidade";
+
 import TabelaUnidade from "./Elements/tabelaUnidade";
 
 const Main = ({children}) => {
@@ -122,7 +121,7 @@ const Main = ({children}) => {
                 <Grid item xs={12}>
                     <Card>
                         <form onSubmit={handleSubmit}>
-                            <CardHeader title="Cadastro de Unidades"/>
+                            <CardHeader title="Cadastro de pacientes"/>
                             <CardContent>
                                 <Grid container spacing={3}>
                                     <Grid item xs={7}>

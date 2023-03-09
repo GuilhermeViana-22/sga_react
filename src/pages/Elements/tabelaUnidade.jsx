@@ -5,17 +5,13 @@ import $ from 'jquery';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net-dt/js/dataTables.dataTables.min.js';
 import 'datatables.net/js/jquery.dataTables';
-import BasicModal from '../Elements/Modal';
-import DeleteIcon from "@material-ui/icons/Delete";
-import Button from '@material-ui/core/Button';
-import Swal from "sweetalert2";
-
 
 const columns = [
-    { id: 'id', label: 'Protocolo' },
-    { id: 'descricao', label: 'Descrição' },
-    { id: 'created_at', label: 'Data cadastro' },
-    { id: 'acoes', label: 'Ações' },
+    { id: 'id', label: 'Protocolo',  width: '5%' },
+    { id: 'descricao', label: 'Descrição',  width: '20%' },
+    { id: 'sigla', label: 'Sigla',  width: '10%' },
+    { id: 'created_at', label: 'Data cadastro',  width: '20%' },
+    { id: 'acoes', label: 'Ações',  width: '10%' },
 ];
 
 function TabelaUnidade() {
@@ -77,7 +73,7 @@ function TabelaUnidade() {
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (
-                                <TableCell id={"header"} key={column.id}>{column.label}</TableCell>
+                                <TableCell id={"header"} key={column.id}  style={{ width: column.width }}>{column.label}</TableCell>
                             ))}
                         </TableRow>
                     </TableHead>
@@ -86,6 +82,7 @@ function TabelaUnidade() {
                             <TableRow key={result.id}>
                                 <TableCell>{result.id}</TableCell>
                                 <TableCell>{result.descricao}</TableCell>
+                                <TableCell>{result.sigla}</TableCell>
                                 <TableCell>{result.created_at}</TableCell>
                                 <TableCell>{result.descricao}</TableCell>
                             </TableRow>

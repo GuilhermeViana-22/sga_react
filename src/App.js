@@ -5,6 +5,7 @@ import Unidade from './pages/Unidade';
 import Consultorios from './pages/Consultorios';
 import Funcionarios from './pages/Funcionarios';
 import Home from './pages/Home';
+import Pacientes from './pages/Pacientes';
 import Layout from './components/Layout';
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/unidades" element={<Unidade />} />
                         <Route path="/consultorios" element={<Consultorios />} />
                         <Route path="/Funcionarios" element={<Funcionarios />} />
+                        <Route path="/Pacientes" element={<Pacientes   />} />
                     </Routes>
                 </Layout>
             </div>

@@ -60,6 +60,11 @@ function Sidebar() {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/pacientes" className={classes.link} >
+                        <i className="fa fa-user" aria-hidden="true"></i> Pacientes
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/consultorios" className={classes.link}>
                         <i className="fa-solid fa-mobile"></i> Consultórios
                     </NavLink>
