@@ -34,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         color: theme.palette.common.white,
     },
+    config: {
+        position: 'fixed',
+        bottom: 20,
+
+    },
 }));
 
 
@@ -49,9 +54,27 @@ function Sidebar() {
                         <i className="fa fa-house"></i> Home
                     </NavLink>
                 </li>
+
+                <li>
+                    <NavLink to="/triagem" className={classes.link}>
+                        <i className="fas fa-bars"></i>Triagem
+                    </NavLink>
+                </li>
                 <li>
                     <NavLink to="/unidades" className={classes.link} >
                         <i className="fa fa-hospital"></i> Unidades
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/deficiencia" className={classes.link} >
+                        <i className="fas fa-wheelchair"></i>  Deficiência
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/doenca" className={classes.link} >
+                        <i className="fas fa-notes-medical"></i>  Doenças
                     </NavLink>
                 </li>
                 <li>
@@ -69,7 +92,13 @@ function Sidebar() {
                         <i className="fa-solid fa-mobile"></i> Consultórios
                     </NavLink>
                 </li>
+
             </ul>
+            <li className={classes.config}>
+                <NavLink to="/configuracoes" className={classes.link}>
+                    <i className="fas fa-cog"></i> Configurações
+                </NavLink>
+            </li>
         </div>
     );
 }

@@ -18,18 +18,6 @@ function TabelaUnidade() {
     const [results, setTableData ] = useState([]);
     const tableRef = useRef(null);
 
-    //chamadas para abertura e fehcamento de modal
-    const [open, setOpen] = useState(false);
-    const [selectedId, setSelectedId] = useState(null);
-    const handleOpen = (id) => {
-        setSelectedId(id);
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setSelectedId(null);
-        setOpen(false);
-    };
-
     useEffect(() => {
         axios.get('/unidade')
             .then(response => {

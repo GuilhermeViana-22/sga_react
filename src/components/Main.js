@@ -4,7 +4,7 @@ const Main = ({ children }) => {
     return (
         <main style={{ marginLeft: '30px', padding: '20px' , width: '100%'}}>
             {children}
-            <p></p>
+            <p>home</p>
         </main>
     );
 };
