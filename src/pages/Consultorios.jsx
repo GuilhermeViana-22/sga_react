@@ -102,7 +102,7 @@ const Main = ({ children }) => {
                                 </Grid>
                             </CardContent>
                             <CardActions>
-                                <Button variant="contained" color="primary" type="submit">
+                                <Button style={{ padding: '0.7rem' }}variant="contained" color="primary" type="submit">
                                     <i className="fa-solid fa-plus"></i> Salvar
                                 </Button>
                             </CardActions>
