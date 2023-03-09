@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Grid, Card, CardHeader, CardContent, CardActions, TextField, Button, InputLabel} from '@material-ui/core';
 import Swal from "sweetalert2";
+import tabelaUnidade from "./Elements/tabelaUnidade";
+import TabelaUnidade from "./Elements/tabelaUnidade";
 
 const Main = ({children}) => {
     //declarando os estados do formulario
@@ -18,6 +20,8 @@ const Main = ({children}) => {
         complemento: '',
         ativo: 1,
     });
+
+    //preenche automaticamente os input do cep api
     const [address, setAddress] = useState({});
     //defini os estados dos erros no código
     const [error, setError] = useState(false);
@@ -97,6 +101,8 @@ const Main = ({children}) => {
                     title: 'Sucesso!',
                     text: response.data.message,
                 });
+
+
             } catch (error) {
                 console.log(error);
                 Swal.fire({
@@ -314,7 +320,7 @@ const Main = ({children}) => {
                                 </Grid>
                             </CardContent>
                             <CardActions>
-                                <Button style={{padding: '0.7rem'}} variant="contained" color="primary" type="submit">
+                                <Button style={{padding: '1rem'}} variant="contained" color="primary" type="submit">
                                     <i className="fa-solid fa-plus"></i> Salvar
                                 </Button>
                             </CardActions>
@@ -322,6 +328,9 @@ const Main = ({children}) => {
                     </Card>
                 </Grid>
             </Grid>
+            <br />
+            <br />
+            <TabelaUnidade /> {/* adiciona o componente Tabela com a key atualizada */}
         </main>
     );
 };

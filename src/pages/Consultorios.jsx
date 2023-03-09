@@ -8,17 +8,19 @@ import {
     TextField,
     Button,
     Switch,
-    FormControlLabel,
+    FormControlLabel, InputLabel,
 } from '@material-ui/core';
-import axios from "axios";
+import axios from '../api';
 import Tabela from './Elements/Tabela';
 import Swal from 'sweetalert2';
+
 
 const Main = ({ children }) => {
     const [checked, setChecked] = useState(false);
     const [formValues, setFormValues] = useState({
         consultorio: '',
         ativo: true,
+        flag: 'Disponivel',
     });
     const [tableKey, setTableKey] = useState(0); // add key to table component
 
@@ -34,7 +36,7 @@ const Main = ({ children }) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8000/api/consultorios', {
+            const response = await axios.post('/consultorios', {
                 consultorio: formValues.consultorio,
                 ativo: parseInt(formValues.ativo),
             });
@@ -70,6 +72,8 @@ const Main = ({ children }) => {
                             <CardContent className={"formularios"}>
                                 <Grid container spacing={3}>
                                     <Grid item xs={5}>
+                                        <InputLabel style={{padding: '0.5rem'}}>Consultório</InputLabel>
+
                                         <TextField
                                             fullWidth
                                             id="outlined-required"
@@ -102,7 +106,7 @@ const Main = ({ children }) => {
                                 </Grid>
                             </CardContent>
                             <CardActions>
-                                <Button style={{ padding: '0.7rem' }}variant="contained" color="primary" type="submit">
+                                <Button style={{ padding: '1rem' }} variant="contained" color="primary" type="submit">
                                     <i className="fa-solid fa-plus"></i> Salvar
                                 </Button>
                             </CardActions>

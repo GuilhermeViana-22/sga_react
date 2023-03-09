@@ -35,7 +35,7 @@ function Tabela() {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:8000/api/consultorios?id=${id}`)
+        axios.delete(`/consultorios?id=${id}`)
             .then((response) => {
                 // exibe mensagem de sucesso com cor verde
                 Swal.fire({
@@ -56,7 +56,7 @@ function Tabela() {
     };
 
     useEffect(() => {
-        axios.get('')
+        axios.get('/consultorios')
             .then(response => {
                 const results = response.data.data;
                 setTableData(results);
