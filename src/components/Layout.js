@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Main from './Main';
 import { Button} from "@material-ui/core";
-
+import '../App.css';
 const Layout = ({ children }) => {
     return (
         <>
@@ -13,10 +13,11 @@ const Layout = ({ children }) => {
                     variant="contained"
                     color="primary"
                     size="small"
-                    style={{ position: "relative", float: "right", fontSize: '10px' }}
+                    style={{ position: "relative", float: "right", fontSize: '10px', padding: '5px' }}
                     onClick={() => window.location.href="/"}>
-                    Voltar
+                    <i className="fas fa-chevron-left"></i>  Voltar
                 </Button>
+                <br/>
                 <br/>
                 {children}
             </Main>

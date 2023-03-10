@@ -6,7 +6,7 @@ import {
     CardContent,
     Button,
 } from '@material-ui/core';
-import ModalFuncionarios from "./Elements/ModalFuncionarios";
+import TriagemModal from "./Elements/TriagemModal";
 
 const Main = ({children}) => {
 
@@ -24,23 +24,21 @@ const Main = ({children}) => {
         setOpen(false);
     };
 
-
-
     return (
         <main style={{marginLeft: '250px', padding: '20px'}}>
             {children}
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Card>
-                        <CardContent className={"card-funcionarios"}>
+                        <CardContent className={"card-triagem"}>
                             <Grid container spacing={3}
                                   style={{display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
                                 <Grid item>
-                                    <CardHeader title="Cadastro de funcionários"/>
+                                    <CardHeader title="Triagem"/>
                                 </Grid>
                                 <Grid item>
-                                    <Button variant="outlined" color="primary" onClick={handleOpenModal}>
-                                        <i className="fa-solid fa-plus"></i> Cadastrar funcionário
+                                    <Button variant="outlined" color="secondary" onClick={handleOpenModal}>
+                                        <i className="fa-solid fa-plus"></i> Chamar próxima senha
                                     </Button>
                                 </Grid>
                             </Grid>
@@ -48,7 +46,7 @@ const Main = ({children}) => {
                     </Card>
                 </Grid>
             </Grid>
-            <ModalFuncionarios open={open} handleClose={handleCloseModal}/>
+            <TriagemModal open={open} handleClose={handleCloseModal}/>
         </main>
     );
 };

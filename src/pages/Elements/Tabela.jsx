@@ -108,7 +108,7 @@ function Tabela() {
                             <TableCell>{result.consultorio}</TableCell>
                             <TableCell>{(Number(result.ativo) === 1) ? 'Disponível' : 'Não'}</TableCell>
                             <TableCell>
-                                <Button onClick={() => handleOpen(result.id)} variant="contained" color="secondary" startIcon={<DeleteIcon />} > Excluir</Button>
+                                <Button  style={{marginLeft: '5px'}} size="small" onClick={() => handleOpen(result.id)} variant="contained" color="secondary" startIcon={<DeleteIcon />} > Excluir</Button>
                                 {(selectedId === result.id) && <BasicModal open={open} handleClose={handleClose} id={result.id} nome={result.consultorio} onConfirmDelete={() => handleDelete(result.id)} />}
                             </TableCell>
                         </TableRow>

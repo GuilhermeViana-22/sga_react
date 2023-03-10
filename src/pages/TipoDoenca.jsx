@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-    Grid,
-    Card,
-    CardHeader,
-    CardContent,
-    CardActions,
-    TextField,
-    Button,
-    InputLabel,
-} from '@material-ui/core';
+import {Grid, Card, CardHeader, CardContent, CardActions, TextField, Button, InputLabel } from '@material-ui/core';
 import axios from '../api';
 import Swal from 'sweetalert2';
 
@@ -73,36 +64,36 @@ const Main = ({ children }) => {
                                     </Grid>
 
                                     <Grid item xs={6}>
-                                        <InputLabel style={{padding: '0.5rem'}}>Tratamento</InputLabel>
+                                        <InputLabel style={{padding: '0.5rem'}}>Observação</InputLabel>
                                         <TextField
                                             fullWidth
                                             id="outlined-required"
-                                            placeholder="Tratamento"
-                                            variant="outlined"
-                                            value={formValues.tratamento}
-                                            onChange={(event) =>
-                                                setFormValues({
-                                                    ...formValues,
-                                                    tratamento: event.target.value,
-                                                })
-                                            }
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={12}>
-                                        <InputLabel style={{ padding: "0.5rem" }}>Observação</InputLabel>
-                                        <TextField
-                                            id="outlined-multiline-static"
                                             placeholder="Observação"
-                                            multiline
-                                            minRows={4} // use minRows em vez de rowsMin
-                                            fullWidth
                                             variant="outlined"
                                             value={formValues.observacao}
                                             onChange={(event) =>
                                                 setFormValues({
                                                     ...formValues,
                                                     observacao: event.target.value,
+                                                })
+                                            }
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={12}>
+                                        <InputLabel style={{ padding: "0.5rem" }}>Tratamento</InputLabel>
+                                        <TextField
+                                            id="outlined-multiline-static"
+                                            placeholder="Tratamento"
+                                            multiline
+                                            minRows={4} // use minRows em vez de rowsMin
+                                            fullWidth
+                                            variant="outlined"
+                                            value={formValues.tratamento}
+                                            onChange={(event) =>
+                                                setFormValues({
+                                                    ...formValues,
+                                                    tratamento: event.target.value,
                                                 })
                                             }
                                         />

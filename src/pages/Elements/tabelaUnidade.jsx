@@ -1,5 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CardContent} from '@material-ui/core';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+    CardContent,
+    Button
+} from '@material-ui/core';
 import axios from '../../api';
 import $ from 'jquery';
 import 'datatables.net-dt/css/jquery.dataTables.css';
@@ -72,7 +82,12 @@ function TabelaUnidade() {
                                 <TableCell>{result.descricao}</TableCell>
                                 <TableCell>{result.sigla}</TableCell>
                                 <TableCell>{result.created_at}</TableCell>
-                                <TableCell>{result.descricao}</TableCell>
+                                <TableCell>
+                                    <Button style={{marginLeft: '5px'}} size="small" variant="contained" color="primary" type="submit">
+                                        <i className="fa-solid fa-eye"></i> Visualizar
+                                    </Button>
+
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

@@ -13,7 +13,7 @@ import {
 import axios from '../api';
 import Tabela from './Elements/Tabela';
 import Swal from 'sweetalert2';
-
+import theme from '../customs/createMuiTheme ';
 
 const Main = ({ children }) => {
     const [checked, setChecked] = useState(false);
@@ -105,11 +105,11 @@ const Main = ({ children }) => {
                                     />
                                 </Grid>
                             </CardContent>
-                            <CardActions>
-                                <Button style={{ padding: '1rem' }} variant="contained" color="primary" type="submit">
-                                    <i className="fa-solid fa-plus"></i> Salvar
-                                </Button>
-                            </CardActions>
+                        <CardActions>
+                            <Button style={{ padding: '1rem' }} variant="contained"  color='primary' type="submit">
+                                <i className="fa-solid fa-plus"></i> Salvar
+                            </Button>
+                        </CardActions>
                         </form>
                     </Card>
                 </Grid>

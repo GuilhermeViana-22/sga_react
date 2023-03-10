@@ -4,8 +4,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import logo from '../assets/logo.png';
 import '../App.css';
 
-const darkmode = '#001834';
-
+const darkmode = 'background: rgb(0,24,52);\n' +
+    'background: linear-gradient(152deg, rgba(0,24,52,1) 0%, rgba(0,24,52,1) 35%, rgba(4,55,113,1) 92%, rgba(7,90,185,1) 98%);';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: 240,
@@ -54,10 +54,9 @@ function Sidebar() {
                         <i className="fa fa-house"></i> Home
                     </NavLink>
                 </li>
-
                 <li>
                     <NavLink to="/triagem" className={classes.link}>
-                        <i className="fas fa-bars"></i>Triagem
+                        <i className="fas fa-file"></i> Triagem
                     </NavLink>
                 </li>
                 <li>
@@ -65,13 +64,11 @@ function Sidebar() {
                         <i className="fa fa-hospital"></i> Unidades
                     </NavLink>
                 </li>
-
                 <li>
                     <NavLink to="/deficiencia" className={classes.link} >
                         <i className="fas fa-wheelchair"></i>  Deficiência
                     </NavLink>
                 </li>
-
                 <li>
                     <NavLink to="/doenca" className={classes.link} >
                         <i className="fas fa-notes-medical"></i>  Doenças
@@ -92,7 +89,6 @@ function Sidebar() {
                         <i className="fa-solid fa-mobile"></i> Consultórios
                     </NavLink>
                 </li>
-
             </ul>
             <li className={classes.config}>
                 <NavLink to="/configuracoes" className={classes.link}>
