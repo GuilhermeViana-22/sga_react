@@ -7,13 +7,11 @@ import {
     CardActions,
     TextField,
     Button,
-    Switch,
-    FormControlLabel, InputLabel,
+    InputLabel,
 } from '@material-ui/core';
 import axios from '../api';
-import Tabela from './Elements/Tabela';
 import Swal from 'sweetalert2';
-import theme from '../customs/createMuiTheme ';
+import TabelaDeficiencia from "./Elements/TabelaDeficiencia";
 
 const Main = ({ children }) => {
     const [checked, setChecked] = useState(false);
@@ -68,41 +66,26 @@ const Main = ({ children }) => {
                 <Grid item xs={12}>
                     <Card>
                         <form onSubmit={handleSubmit}>
-                            <CardHeader    title="Cadastro de Consutórios" />
+                            <CardHeader    title="Cadastro de deficiências" />
                             <CardContent className={"formularios"}>
                                 <Grid container spacing={3}>
                                     <Grid item xs={5}>
-                                        <InputLabel style={{padding: '0.5rem'}}>Consultório</InputLabel>
+                                        <InputLabel style={{padding: '0.5rem'}}>Deficiências</InputLabel>
 
                                         <TextField
                                             fullWidth
                                             id="outlined-required"
-                                            placeholder="Consultório"
+                                            placeholder="Deficiências"
                                             variant="outlined"
-                                            value={formValues.consultorio}
+                                            value={formValues.tipo_deficiencia}
                                             onChange={(event) =>
                                                 setFormValues({
                                                     ...formValues,
-                                                    consultorio: event.target.value,
+                                                    tipo_deficiencia: event.target.value,
                                                 })
                                             }
                                         />
                                     </Grid>
-                                </Grid>
-                                <br />
-                                <br />
-                                <Grid item xs={4}>
-                                    <FormControlLabel
-                                        control={
-                                            <Switch
-                                                checked={checked}
-                                                onChange={handleChange}
-                                                name="mySwitch"
-                                                color="primary"
-                                            />
-                                        }
-                                        label="Ativo"
-                                    />
                                 </Grid>
                             </CardContent>
                             <CardActions>
@@ -116,7 +99,7 @@ const Main = ({ children }) => {
             </Grid>
             <br />
             <br />
-            <Tabela key={tableKey} /> {/* adiciona o componente Tabela com a key atualizada */}
+            <TabelaDeficiencia key={tableKey} /> {/* adiciona o componente Tabela com a key atualizada */}
         </main>
     );
 };
