@@ -20,6 +20,10 @@ const columns = [
 
 function Tabela() {
     const [results, setTableData] = useState([]);
+
+    //atualiza a tabeça
+
+    const [updated, setUpdated] = useState(false);
     const tableRef = useRef(null);
 
     //chamadas para abertura e fehcamento de modal
@@ -43,9 +47,13 @@ function Tabela() {
                     title: 'Sucesso!',
                     text: response.data.message,
                 });
-                console.log(response)
 
+                // Atualiza o estado de atualização da tabela
+                setUpdated(!updated);
+
+                // Atualiza o estado da tabela removendo o item excluído
                 setTableData(prevResults => prevResults.filter(result => result.id !== id));
+
             })
             .catch(error => {
                 Swal.fire({
@@ -140,11 +148,9 @@ function Tabela() {
                                             onClick={() => handleOpen(result.id)} variant="contained" color="secondary"
                                             startIcon={<DeleteIcon/>}> Excluir</Button>
                                     {(selectedId === result.id) &&
-                                        <BasicModal open={open} handleClose={handleClose} id={result.id}
+                                        <BasicModal open={open} setUpdated={(!updated)} handleClose={handleClose} id={result.id}
                                                     nome={result.consultorio}
                                                     onConfirmDelete={() => handleDelete(result.id)}/>}
-
-
                                 </TableCell>
                             </TableRow>
                         ))}

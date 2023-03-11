@@ -18,6 +18,9 @@ const Main = ({children}) => {
         //inicialmente o consultorio é cadastrado como disponivel para depois ser alterado quando ficar ocupado
         flag: 'Disponivel',
     });
+    //defini os estados dos erros no código
+    const [error, setError] = useState(false);
+
     //adiciona a constante da tabela
     const [tableKey, setTableKey] = useState(0); // add key to table component
 
@@ -30,32 +33,52 @@ const Main = ({children}) => {
         });
     };
 
+
+    //realiza a validação de informações
+    function validateFields() {
+        if (formValues.consultorio === '') {
+            return false;
+        }
+
+        if (formValues.ativo === '') {
+
+            return false;
+        }
+        return true;
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        try {
-            const response = await axios.post('/consultorios', {
-                consultorio: formValues.consultorio,
-                ativo: parseInt(formValues.ativo),
-            });
+        //verifica se as informações foram preenchidas
+        const isValid = validateFields();
+        setError(!isValid);
 
-            // exibe mensagem de sucesso com cor verde
-            Swal.fire({
-                icon: 'success',
-                title: 'Sucesso!',
-                text: response.data.message,
-            });
+        if (isValid) {
+            try {
+                const response = await axios.post('/consultorios', {
+                    consultorio: formValues.consultorio,
+                    ativo: parseInt(formValues.ativo),
+                });
 
-            // refresh table component by updating its key
-            setTableKey(tableKey + 1);
+                // exibe mensagem de sucesso com cor verde
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso!',
+                    text: response.data.message,
+                });
 
-        } catch (error) {
+                // refresh table component by updating its key
+                setTableKey(tableKey + 1);
 
-            Swal.fire({
-                icon: 'error',
-                title: 'Erro!',
-                text: error.response.data.error,
-            });
+            } catch (error) {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro!',
+                    text: error.response.data.message,
+                });
+            }
         }
     }
 
@@ -114,7 +137,10 @@ const Main = ({children}) => {
             />
         );
     });
+    //essa contante completa refere-se a estilização e utilização de um botao swih
 
+
+    //inicio do render da pagina
     return (
         <main style={{marginLeft: '250px', padding: '20px'}}>
             {children}
@@ -132,7 +158,7 @@ const Main = ({children}) => {
                                             id="outlined-required"
                                             placeholder="Consultório"
                                             variant="outlined"
-                                            inputProps={{ maxLength: 50 }} // adiciona o atributo maxlength diretamente no input
+                                            inputProps={{maxLength: 50}} // adiciona o atributo maxlength diretamente no input
                                             value={formValues.consultorio}
                                             onChange={(event) =>
                                                 setFormValues({
@@ -140,11 +166,13 @@ const Main = ({children}) => {
                                                     consultorio: event.target.value,
                                                 })
                                             }
+                                            error={error}
+                                            helperText={error ? 'O Consultório deve ser preenchido.' : ''}
                                         />
                                     </Grid>
                                     <Grid item xs={5}>
                                         <InputLabel style={{padding: '0.6rem'}}>Ativo</InputLabel>
-                                        <IOSSwitch checked={checked} onChange={handleChange} name="checkedB"/>
+                                        <IOSSwitch checked={checked} onChange={handleChange} name="checkedB" error={error} helperText={error ? 'Durante o cadastro selecione o consultório como ativo.' : ''}/>
                                     </Grid>
                                 </Grid>
                             </CardContent>
