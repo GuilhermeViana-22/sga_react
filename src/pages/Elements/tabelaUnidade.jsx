@@ -83,6 +83,11 @@ function TabelaUnidade() {
                                 <TableCell>{result.sigla}</TableCell>
                                 <TableCell>{result.created_at}</TableCell>
                                 <TableCell>
+                                    {/*botao de realizar edições*/}
+                                    <Button style={{marginLeft: '5px', backgroundColor: '#5bc0de', color: '#fff'}} size="small" variant="contained"  type="submit" className="bg-yellow-500">
+                                        <i className="fa-solid fa-pencil"></i> Editar
+                                    </Button>
+
                                     <Button style={{marginLeft: '5px'}} size="small" variant="contained" color="primary" type="submit">
                                         <i className="fa-solid fa-eye"></i> Visualizar
                                     </Button>
