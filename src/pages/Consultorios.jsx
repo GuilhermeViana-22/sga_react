@@ -63,12 +63,14 @@ const Main = ({children}) => {
     //essa contante completa refere-se a estilização e utilização de um botao swih
     const IOSSwitch = withStyles((theme) => ({
         root: {
-            width: 100,
-            height: 50,
+            width: 105,
+            height: 54,
             padding: 2,
+            top: -5,
             margin: theme.spacing(1),
             transition: 'background-color 2s ease-in-out', // altere o tempo aqui
         },
+
         switchBase: {
             padding: 10,
             '&$checked': {
@@ -76,25 +78,21 @@ const Main = ({children}) => {
                 color: theme.palette.common.white,
 
                 '& + $track': {
-                    backgroundColor: theme.palette.common.primary,
+                    backgroundColor: '#044e86',
                     opacity: 1,
                     border: 'none',
                 },
             },
-            '&$focusVisible $thumb': {
-                color: '#52d869',
-                border: '6px solid #fff',
-            },
         },
         thumb: {
-            width: 30,
-            height: 30,
+            width: 35,
+            height: 33,
             boxShadow: 'none',
         },
         track: {
-            border: `1px solid ${theme.palette.grey[400]}`,
+            border: `1px solid '#002D51'`,
             borderRadius: 50 / 2,
-            backgroundColor: theme.palette.grey[50],
+            backgroundColor: '#C5C5C5',
             opacity: 1,
             transition: theme.transitions.create(['background-color', 'border']),
         },
@@ -129,12 +127,12 @@ const Main = ({children}) => {
                                 <Grid container spacing={3}>
                                     <Grid item xs={5}>
                                         <InputLabel style={{padding: '0.6rem'}}>Consultório</InputLabel>
-
                                         <TextField
                                             fullWidth
                                             id="outlined-required"
                                             placeholder="Consultório"
                                             variant="outlined"
+                                            inputProps={{ maxLength: 50 }} // adiciona o atributo maxlength diretamente no input
                                             value={formValues.consultorio}
                                             onChange={(event) =>
                                                 setFormValues({
