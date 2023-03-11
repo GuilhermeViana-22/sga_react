@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 
 const columns = [
     { id: 'id', label: 'Protocolo',   width: '1%' },
-
     { id: 'name', label: 'Nome',   width: '20%' },
     { id: 'email', label: 'E-mail',   width: '10%' },
     { id: 'cpf', label: 'CPF',   width: '10%' },
