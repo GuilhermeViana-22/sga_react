@@ -13,7 +13,6 @@ import {
 import axios from '../api';
 import Tabela from './Elements/Tabela';
 import Swal from 'sweetalert2';
-import theme from '../customs/createMuiTheme ';
 
 const Main = ({ children }) => {
     const [checked, setChecked] = useState(false);
@@ -52,7 +51,7 @@ const Main = ({ children }) => {
             setTableKey(tableKey + 1);
 
         } catch (error) {
-            console.log(error); // exibe o erro completo no console
+
             Swal.fire({
                 icon: 'error',
                 title: 'Erro!',

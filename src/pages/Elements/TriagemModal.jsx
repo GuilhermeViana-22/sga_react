@@ -54,12 +54,7 @@ export default function TriagemModal({ open, handleClose }) {
     }
 
     return (
-        <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-        >
+        <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2" sx={headerStyle}>
                     Chamar próxima senha

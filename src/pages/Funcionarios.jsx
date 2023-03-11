@@ -7,6 +7,7 @@ import {
     Button,
 } from '@material-ui/core';
 import ModalFuncionarios from "./Elements/ModalFuncionarios";
+import TabelaFuncionarios from "./Elements/TabelaFuncionarios";
 
 const Main = ({children}) => {
 
@@ -49,6 +50,10 @@ const Main = ({children}) => {
                 </Grid>
             </Grid>
             <ModalFuncionarios open={open} handleClose={handleCloseModal}/>
+            {/*inicio da tabela de funcionarios*/}
+            <br />
+            <br />
+            <TabelaFuncionarios /> {/* adiciona o componente Tabela com a key atualizada */}
         </main>
     );
 };

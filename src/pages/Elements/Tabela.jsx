@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CardContent} from '@material-ui/core';
+import React, {useState, useEffect, useRef} from 'react';
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CardContent} from '@material-ui/core';
 import axios from '../../api';
 import $ from 'jquery';
 import 'datatables.net-dt/css/jquery.dataTables.css';
@@ -12,14 +12,14 @@ import Swal from "sweetalert2";
 
 
 const columns = [
-    { id: 'id', label: 'Código ' },
-    { id: 'Consultório', label: 'Consultório' },
-    { id: 'ativo', label: 'Disponível' },
-    { id: 'acoes', label: 'Ações' },
+    {id: 'id', label: 'Código '},
+    {id: 'Consultório', label: 'Consultório'},
+    {id: 'ativo', label: 'Disponível'},
+    {id: 'acoes', label: 'Ações'},
 ];
 
 function Tabela() {
-    const [results, setTableData ] = useState([]);
+    const [results, setTableData] = useState([]);
     const tableRef = useRef(null);
 
     //chamadas para abertura e fehcamento de modal
@@ -41,8 +41,9 @@ function Tabela() {
                 Swal.fire({
                     icon: 'success',
                     title: 'Sucesso!',
-                    text:  response.data.message,
-                }); console.log(response)
+                    text: response.data.message,
+                });
+                console.log(response)
 
                 setTableData(prevResults => prevResults.filter(result => result.id !== id));
             })
@@ -68,7 +69,7 @@ function Tabela() {
                 }
 
                 // Inicialize o DataTable aqui
-                $(document).ready(function() {
+                $(document).ready(function () {
                     $('#consultorios').DataTable({
                         language: {
                             url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json'
@@ -93,29 +94,38 @@ function Tabela() {
 
         <TableContainer className={'tabela'} component={Paper}>
             <CardContent>
-            <Table id="consultorios" ref={tableRef}>
-                <TableHead>
-                    <TableRow>
-                        {columns.map((column) => (
-                            <TableCell id={"header"} key={column.id}>{column.label}</TableCell>
-                        ))}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {results.map((result) => (
-                        <TableRow key={result.id}>
-                            <TableCell>{result.id}</TableCell>
-                            <TableCell>{result.consultorio}</TableCell>
-                            <TableCell>{(Number(result.ativo) === 1) ? 'Disponível' : 'Não'}</TableCell>
-                            <TableCell>
-                                <Button  style={{marginLeft: '5px'}} size="small" onClick={() => handleOpen(result.id)} variant="contained" color="secondary" startIcon={<DeleteIcon />} > Excluir</Button>
-                                {(selectedId === result.id) && <BasicModal open={open} handleClose={handleClose} id={result.id} nome={result.consultorio} onConfirmDelete={() => handleDelete(result.id)} />}
-                            </TableCell>
+                <Table id="consultorios" ref={tableRef}>
+                    <TableHead>
+                        <TableRow>
+                            {columns.map((column) => (
+                                <TableCell id={"header"} key={column.id}>{column.label}</TableCell>
+                            ))}
                         </TableRow>
-                    ))}
-                </TableBody>
+                    </TableHead>
+                    <TableBody>
+                        {results.map((result) => (
+                            <TableRow key={result.id}>
+                                <TableCell>{result.id}</TableCell>
+                                <TableCell>{result.consultorio}</TableCell>
+                                <TableCell>{(Number(result.ativo) === 1) ? 'Disponível' : 'Não'}</TableCell>
+                                <TableCell>
+                                    <Button style={{marginLeft: '5px'}} size="small"
+                                            onClick={() => handleOpen(result.id)} variant="contained" color="secondary"
+                                            startIcon={<DeleteIcon/>}> Excluir</Button>
+                                    {(selectedId === result.id) &&
+                                        <BasicModal open={open} handleClose={handleClose} id={result.id}
+                                                    nome={result.consultorio}
+                                                    onConfirmDelete={() => handleDelete(result.id)}/>}
+{/*inicio do botao de visualização*/}
+                                    <Button style={{marginLeft: '5px'}} size="small" variant="contained" color="primary" type="submit">
+                                        <i className="fa-solid fa-eye"></i> Visualizar
+                                    </Button>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
 
-            </Table>
+                </Table>
             </CardContent>
         </TableContainer>
 

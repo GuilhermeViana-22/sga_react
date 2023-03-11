@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Grid, Card, CardHeader, CardContent, CardActions, TextField, Button, InputLabel } from '@material-ui/core';
 import axios from '../api';
 import Swal from 'sweetalert2';
+import TabelaDoenca from "./Elements/TabelaDoenca";
 
 
 const Main = ({ children }) => {
@@ -17,8 +18,6 @@ const Main = ({ children }) => {
 
         try {
             const response = await axios.post('/tipodoencas', formValues);
-            console.log(formValues)
-            console.log(response)
             // exibe mensagem de sucesso com cor verde
             Swal.fire({
                 icon: 'success',
@@ -27,7 +26,7 @@ const Main = ({ children }) => {
             });
 
         } catch (error) {
-            console.log(error); // exibe o erro completo no console
+
             Swal.fire({
                 icon: 'error',
                 title: 'Erro!',
@@ -110,6 +109,9 @@ const Main = ({ children }) => {
                     </Card>
                 </Grid>
             </Grid>
+            <br />
+            <br />
+            <TabelaDoenca /> {/* adiciona o componente Tabela com a key atualizada */}
         </main>
     );
 };
