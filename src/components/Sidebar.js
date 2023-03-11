@@ -86,7 +86,7 @@ function Sidebar() {
                 </li>
                 <li>
                     <NavLink to="/consultorios" className={classes.link}>
-                        <i className="fa-solid fa-mobile"></i> Consultórios
+                        <i className="fas fa-door-open"></i> Consultórios
                     </NavLink>
                 </li>
             </ul>

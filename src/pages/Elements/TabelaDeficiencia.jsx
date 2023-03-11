@@ -55,6 +55,16 @@ function TabelaDeficiencia() {
     };
 
     useEffect(() => {
+        //abre o modal de loading enquanto busca os dados da plataforma
+        Swal.fire({
+            title: 'Carregando...',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
         axios.get('/tipodeficiencia')
             .then(response => {
                 const results = response.data.data;
@@ -79,6 +89,10 @@ function TabelaDeficiencia() {
             })
             .catch(error => {
                 console.log(error);
+            })
+            .finally(()=>{
+                //fecha o modal apos tentar pegar as informações do axios
+                Swal.close();
             });
     }, []);
 

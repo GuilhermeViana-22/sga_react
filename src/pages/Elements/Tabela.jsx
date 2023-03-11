@@ -57,6 +57,16 @@ function Tabela() {
     };
 
     useEffect(() => {
+
+        Swal.fire({
+            title: 'Carregando...',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
         axios.get('/consultorios')
             .then(response => {
                 const results = response.data.data;
@@ -81,6 +91,9 @@ function Tabela() {
             })
             .catch(error => {
                 console.log(error);
+            })
+            .finally(() => {
+                Swal.close();
             });
     }, []);
 
@@ -109,8 +122,8 @@ function Tabela() {
                                 <TableCell>{result.consultorio}</TableCell>
                                 <TableCell style={{ textAlign: 'center' }}>
                                     {(Number(result.ativo) === 1) ?
-                                        <i className="fas fa-check-circle" style={{ color: 'green', fontSize: '25pt' }}></i> :
-                                        <i className="fas fa-times-circle" style={{ color: 'red', fontSize: '25pt' }}></i>
+                                        <i className="fas fa-door-open" style={{ color: 'green', fontSize: '25pt' }}></i> :
+                                        <i className="fas fa-door-closed" style={{ color: 'red', fontSize: '25pt' }}></i>
                                     }
                                 </TableCell>
                                 <TableCell>
