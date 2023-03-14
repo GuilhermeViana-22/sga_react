@@ -93,7 +93,14 @@ function Tabela() {
                             url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json'
                         },
                         deferRender: true,
-                        destroy: true // adicione essa opção
+                        destroy: true, // adicione essa opção
+                        autoWidth: false,
+                        columnDefs: [
+                            {
+                                targets: ['_all'],
+                                className: 'mdc-data-table__cell',
+                            },
+                        ],
                     });
                 });
             })
@@ -113,9 +120,9 @@ function Tabela() {
 
     return (
 
-        <TableContainer className={'tabela'} component={Paper}>
+        <TableContainer component={Paper}>
             <CardContent>
-                <Table id="consultorios" ref={tableRef}>
+                <Table id="consultorios" className={'table is-striped'} ref={tableRef}>
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (

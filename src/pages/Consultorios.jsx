@@ -185,7 +185,10 @@ const Main = ({children}) => {
             </Grid>
             <br/>
             <br/>
-            <Tabela key={tableKey}/> {/* adiciona o componente Tabela com a key atualizada */}
+            <Card >
+                <Tabela style={{padding: '50px'}} key={tableKey}/> {/* adiciona o componente Tabela com a key atualizada */}
+            </Card>
+
         </main>
     );
 };
