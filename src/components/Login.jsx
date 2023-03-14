@@ -51,7 +51,7 @@ export default function SignIn() {
                         Sistema de gerenciamento
                     </Typography>
                     <Box component="form" noValidate sx={{ mt: 1 }}>
-                        <InputLabel style={{padding: '0.6rem'}}>Email</InputLabel>
+                        <InputLabel style={{padding: '1rem'}}>Email</InputLabel>
                         <TextField
                             fullWidth
                             id="outlined-required"
@@ -59,7 +59,7 @@ export default function SignIn() {
                             variant="outlined"
                             inputProps={{maxLength: 50}}
                         />
-                        <InputLabel style={{padding: '0.6rem'}}>Senha</InputLabel>
+                        <InputLabel style={{padding: '1rem', marginTop: '10px'}}>Senha</InputLabel>
                         <TextField
                             fullWidth
                             id="outlined-required"

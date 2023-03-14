@@ -8,11 +8,11 @@ const darkmode = 'background: rgb(0,24,52);\n' +
     'background: linear-gradient(152deg, rgba(0,24,52,1) 0%, rgba(0,24,52,1) 35%, rgba(4,55,113,1) 92%, rgba(7,90,185,1) 98%);';
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 240,
+        width: 220,
         height: '100vh',
         backgroundColor: darkmode,
         color: theme.palette.common.white,
-        padding: theme.spacing(4),
+        padding: theme.spacing(2),
         position: 'fixed', // adiciona a propriedade de posição fixa
         left: 0, // fixa o componente na esquerda
     },

@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
                     variant="contained"
                     color="primary"
                     size="small"
-                    style={{ position: "relative", float: "right", fontSize: '10px', padding: '5px' }}
+                    style={{ position: "relative", float: "right"}}
                     onClick={() => window.location.href="/"}>
                     <i className="fas fa-chevron-left"></i>  Voltar
                 </Button>
